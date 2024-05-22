@@ -1,0 +1,9 @@
+[user]
+	email = 64601197+sebastian-rt@users.noreply.github.com
+	name = Sebastian R.
+[core]
+	editor = nvim
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
