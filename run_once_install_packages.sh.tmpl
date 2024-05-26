@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Install a package manager hook, which automatically updates the package list after each transaction
+
+echo Installing packages...
+
+CHEZMOI_USER_SOURCE_PATH=$(chezmoi source-path)
+_USER=$USER
+
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+sudo pacman -S --needed - < $CHEZMOI_USER_SOURCE_PATH/.pkglist/pacman-explicit-nodep.list
+{{ end -}}
+
+echo "  Done"
