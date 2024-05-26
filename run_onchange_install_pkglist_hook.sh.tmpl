@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Install a package manager hook, which automatically updates the package list after each transaction
+
+CHEZMOI_USER_SOURCE_PATH=$(chezmoi source-path)
+_USER=$USER
+
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+echo Installing pacman pkglist hook...
+
+sudo sh -c "cat $CHEZMOI_USER_SOURCE_PATH/.root/usr/share/libalpm/hooks/update-pkglist.hook | sed -e \"s/USER/$_USER/g\" > /usr/share/libalpm/hooks/update-pkglist.hook"
+{{ end -}}
+
+echo "  Done"

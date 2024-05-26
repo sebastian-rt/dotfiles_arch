@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+When = PostTransaction
+Exec = /usr/bin/su -c "$(chezmoi source-path)/.scripts/pkg/update-pkglist-pacman.sh" USER
